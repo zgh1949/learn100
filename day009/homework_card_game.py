@@ -45,9 +45,9 @@ console = Console(highlight=False)
 
 class Suite(Enum):
     hearts = (0, "♥", "[red]♥[/red]",)
-    spades = (1, "♠", "[black]♠[/black]")
+    spades = (1, "♠", "[blue]♠[/blue]")
     diamonds = (2, "♦", "[red]♦[/red]")
-    clubs = (3, "♣", "[black]♣[/black]")
+    clubs = (3, "♣", "[blue]♣[/blue]")
 
     def __init__(self, code, sign, rich_text):
         self.code = code
@@ -152,3 +152,6 @@ if __name__ == "__main__":
     for player in players:
         player.arrange()
         console.print(f"{player}" )
+
+    while True:
+        pass
