@@ -24,6 +24,6 @@ image = ImageCaptcha(width=200, height=100)
 
 code = generate_random_text(6)
 
-image.write(code, './day007/captcah.png')
+image.write(code, './day007/captcha.png')
 
 print("生成验证码:", code)

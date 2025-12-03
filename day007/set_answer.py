@@ -16,7 +16,7 @@ for i in s:
     print(i, end="")
 print()
 # 元组转集合
-l = list(s)
+l = set(s)
 # 交集
 s1 = set(range(5, 16))
 print(s & s1)

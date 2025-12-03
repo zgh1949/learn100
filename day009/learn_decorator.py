@@ -70,3 +70,38 @@ print_hello(name="zgh")
 
 
 # D. @functools.wraps(func)
+def bad_decorator(func):
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+    return wrapper
+
+@bad_decorator
+def example():
+    """示例函数"""
+    pass
+
+print(example.__name__)  # 输出: wrapper（不是我们想要的）
+print(example.__doc__)   # 输出: None（文档字符串丢失了）
+
+import functools
+
+def my_decorator(func):
+    @functools.wraps(func)  # 保留原函数的元数据
+    def wrapper(*args, **kwargs):
+        """包装函数的文档字符串"""
+        print(f"调用函数: {func.__name__}")
+        result = func(*args, **kwargs)
+        print("函数执行完毕")
+        return result
+    return wrapper
+
+@my_decorator
+def say_hello(name):
+    """打招呼函数"""
+    print(f"Hello, {name}!")
+    return f"已向 {name} 打招呼"
+
+# 测试
+print(say_hello.__name__)  # 输出: say_hello（而不是 wrapper）
+print(say_hello.__doc__)   # 输出: 打招呼函数（而不是包装函数的文档字符串）
+say_hello("Alice")

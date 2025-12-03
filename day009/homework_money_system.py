@@ -9,7 +9,7 @@ from abc import ABC, abstractmethod
 from enum import Enum
 
 
-class Calculator:
+class Calculator(ABC):
 
     @abstractmethod
     def get_salary(self):
