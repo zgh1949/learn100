@@ -1,6 +1,8 @@
 import csv
 import random
 
+# wirter writerow reader
+
 # BUG 为什么加newline=""? Python会在每行后面添加额外的空行。这是因为CSV writer在内部使用\n作为行结束符，而Windows系统会将\n转换为\r\n，导致每行之间出现空行
 with open("day023/scores.csv", "w", encoding="utf-8", newline="") as file:
     writer = csv.writer(file, delimiter=",",
